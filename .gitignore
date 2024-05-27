@@ -1,0 +1,5 @@
+# ignore expo folders
+.expo/
+
+# ignore node_modules
+node_modules/
