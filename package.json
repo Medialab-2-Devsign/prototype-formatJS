@@ -6,16 +6,21 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "extract": "formatjs extract",
+    "compile": "formatjs compile"
   },
   "dependencies": {
     "expo": "~51.0.9",
     "expo-status-bar": "~1.12.1",
-    "react": "18.2.0",
+    "react": "^18.2.0",
+    "react-intl": "^6.6.8",
     "react-native": "0.74.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "@formatjs/cli": "^6.2.12",
+    "babel-plugin-formatjs": "^10.5.16"
   },
   "private": true
 }
