@@ -42,30 +42,47 @@ export default function App() {
 
   useEffect(() => {
     setUserLocale("en");
+    (async () => {
+      const msg = await loadLocaleData(userLocale);
+      setLocaleMessages(msg);
+    })();
   }, []);
 
   return (
-    <IntlProvider locale={userLocale} messages={localeMessages}>
-      <View style={styles.container}>
-        <Text>Current Locale:</Text>
-        <Text>{userLocale}</Text>
-        <Text>Lets put up some text here:</Text>
-        <Text>
-          <FormattedMessage
-            description={"Welcome Message"}
-            defaultMessage={
-              "Welcome to my Tech Research into FormatJS. NOTE: This is the fallback message"
-            }
-          />
-        </Text>
-        <Text>And a date formatted according to the chosen localization:</Text>
-        <Text>
-          <FormattedDate value={Date.now()} />
-        </Text>
-        <Button title="Change Language" onPress={changeLocale} />
-        <StatusBar style="auto" />
-      </View>
-    </IntlProvider>
+    <>
+      {localeMessages && (
+        <IntlProvider
+          locale={userLocale}
+          messages={localeMessages}
+          defaultLocale="en"
+        >
+          <View style={styles.container}>
+            <>
+              <Text>Current Locale:</Text>
+              <Text>{userLocale}</Text>
+              <Text>Lets put up some text here:</Text>
+              <Text>
+                <FormattedMessage
+                  description={"Welcome Message"}
+                  defaultMessage={
+                    "Welcome to my Tech Research into FormatJS. NOTE: This is the fallback message"
+                  }
+                />
+              </Text>
+              <Text>
+                And a date formatted according to the chosen localization:
+              </Text>
+              <Text>
+                <FormattedDate value={Date.now()} />
+              </Text>
+              <Button title="Change Language" onPress={changeLocale} />
+            </>
+
+            <StatusBar style="auto" />
+          </View>
+        </IntlProvider>
+      )}
+    </>
   );
 }
 
